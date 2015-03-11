@@ -2,7 +2,14 @@ var shell = require('..');
 
 var assert = require('assert');
 
-shell.config.silent = true;
+describe('test', function() {
+  
+  beforeEach(function() {
+    shell.cd(__dirname);    
+    shell.config.silent = true;
+  });
+  
+  it('all tests', function() {
 
 shell.rm('-rf', 'tmp');
 shell.mkdir('tmp');
@@ -82,5 +89,5 @@ assert.equal(result, true);//true
 var result = shell.test('-L', 'resources/404');
 assert.equal(shell.error(), null);
 assert.equal(result, false);//false
-
-shell.exit(123);
+  });
+});

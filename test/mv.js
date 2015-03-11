@@ -3,7 +3,14 @@ var shell = require('..');
 var assert = require('assert'),
     fs = require('fs');
 
-shell.config.silent = true;
+describe('mv', function() {
+  
+  beforeEach(function() {
+    shell.cd(__dirname);    
+    shell.config.silent = true;
+  });
+  
+  it('all tests', function() {
 
 function numLines(str) {
   return typeof str === 'string' ? str.match(/\n/g).length : 0;
@@ -122,5 +129,5 @@ shell.mv('-f', 'file1', 'file2'); // dest exists, but -f given
 assert.equal(shell.error(), null);
 assert.equal(fs.existsSync('file1'), false);
 assert.equal(fs.existsSync('file2'), true);
-
-shell.exit(123);
+  });
+});

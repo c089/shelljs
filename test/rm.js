@@ -4,7 +4,14 @@ var assert = require('assert'),
     path = require('path'),
     fs = require('fs');
 
-shell.config.silent = true;
+describe('rm', function() {
+  
+  beforeEach(function() {
+    shell.cd(__dirname);    
+    shell.config.silent = true;
+  });
+  
+  it('all tests', function() {
 
 shell.rm('-rf', 'tmp');
 shell.mkdir('tmp');
@@ -185,4 +192,5 @@ assert.equal(shell.error(), null);
 assert.equal(fs.existsSync('tmp/rm/link_to_a_dir'), false);
 assert.equal(fs.existsSync('tmp/rm/a_dir'), true);
 
-shell.exit(123);
+  });
+});

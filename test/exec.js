@@ -3,7 +3,14 @@ var shell = require('..');
 var assert = require('assert'),
     util = require('util');
 
-shell.config.silent = true;
+describe('exec', function() {
+  
+  beforeEach(function() {
+    shell.cd(__dirname);    
+    shell.config.silent = true;
+  });
+  
+  it('all tests', function() {
 
 //
 // Invalids
@@ -107,7 +114,7 @@ shell.exec('node -e \"console.log(5678);\"', function(code, output) {
       assert.equal(code, 0);
       assert.ok(output === '5678\n' || output === '5678\nundefined\n');  // 'undefined' for v0.4
 
-      shell.exit(123);
+      //shell.exit(123);
 
     });
 
@@ -116,3 +123,5 @@ shell.exec('node -e \"console.log(5678);\"', function(code, output) {
 });
 
 assert.equal(shell.error(), null);
+  });
+});

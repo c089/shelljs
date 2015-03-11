@@ -4,7 +4,14 @@ var assert = require('assert'),
     fs = require('fs'),
     path = require('path');
 
-shell.config.silent = true;
+describe('ln', function() {
+  
+  beforeEach(function() {
+    shell.cd(__dirname);    
+    shell.config.silent = true;
+  });
+  
+  it('all tests', function() {
 
 shell.rm('-rf', 'tmp');
 shell.mkdir('tmp');
@@ -95,5 +102,5 @@ assert.equal(
   fs.readFileSync('tmp/abspath').toString(),
   'new content 3'
 );
-
-shell.exit(123);
+  });
+});

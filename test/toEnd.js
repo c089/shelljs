@@ -3,7 +3,14 @@ var shell = require('..');
 var assert = require('assert'),
     fs = require('fs');
 
-shell.config.silent = true;
+describe('toEnd', function() {
+  
+  beforeEach(function() {
+    shell.cd(__dirname);    
+    shell.config.silent = true;
+  });
+  
+  it('all tests', function() {
 
 shell.rm('-rf', 'tmp');
 shell.mkdir('tmp');
@@ -28,5 +35,5 @@ assert.equal(fs.existsSync('tmp/toEnd1'), true); //Check that file was created
 var result = shell.cat('tmp/toEnd1');
 assert.equal(shell.error(), null);
 assert.equal(result, 'hello world'); //Check that the result is what we expect
-
-shell.exit(123);
+  });
+});

@@ -3,8 +3,14 @@ var common = require('../src/common');
 
 var assert = require('assert');
 
-shell.config.silent = true;
-
+describe('common', function() {
+  
+  beforeEach(function() {
+    shell.cd(__dirname);    
+    shell.config.silent = true;
+  });
+  
+  it('all tests', function() {
 shell.rm('-rf', 'tmp');
 shell.mkdir('tmp');
 
@@ -46,6 +52,6 @@ var result = common.expand(['**/file*.js']);
 assert.equal(shell.error(), null);
 assert.deepEqual(result.sort(), ["resources/file1.js","resources/file2.js","resources/ls/file1.js","resources/ls/file2.js"].sort());
 
-shell.exit(123);
 
-
+  });
+});

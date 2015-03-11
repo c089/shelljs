@@ -3,7 +3,14 @@ var shell = require('..');
 var assert = require('assert'),
     fs = require('fs');
 
-shell.config.silent = true;
+describe('cp', function() {
+  
+  beforeEach(function() {
+    shell.cd(__dirname);    
+    shell.config.silent = true;
+  });
+  
+  it('all tests', function() {
 
 function numLines(str) {
   return typeof str === 'string' ? str.match(/\n/g).length : 0;
@@ -143,4 +150,5 @@ assert.equal(fs.statSync('resources/cp-mode-bits/executable').mode & execBit, ex
 shell.cp('resources/cp-mode-bits/executable', 'tmp/executable');
 assert.equal(fs.statSync('resources/cp-mode-bits/executable').mode, fs.statSync('tmp/executable').mode);
 
-shell.exit(123);
+  });
+});

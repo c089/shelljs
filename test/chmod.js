@@ -3,7 +3,15 @@ var shell = require('..');
 var assert = require('assert'),
     fs = require('fs');
 
-shell.config.silent = true;
+describe('chmod', function() {
+  
+  beforeEach(function() {
+    shell.cd(__dirname);    
+    shell.config.silent = true;
+  });
+  
+  it('all tests', function() {
+        
 
 //
 // Invalids
@@ -77,4 +85,6 @@ assert.equal(fs.statSync('resources/chmod/b/a').mode & parseInt('700', 8), parse
 shell.chmod('-R', 'u+w', 'resources/chmod/a/b');
 fs.unlinkSync('resources/chmod/a/b/c/link');
 
-shell.exit(123);
+
+  });
+});

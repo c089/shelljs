@@ -3,7 +3,14 @@ var shell = require('..');
 var assert = require('assert'),
     fs = require('fs');
 
-shell.config.silent = true;
+describe('sed', function() {
+  
+  beforeEach(function() {
+    shell.cd(__dirname);    
+    shell.config.silent = true;
+  });
+  
+  it('all tests', function() {
 
 shell.rm('-rf', 'tmp');
 shell.mkdir('tmp');
@@ -53,5 +60,5 @@ var result = shell.sed('-i', /test1/, 'hello', 'tmp/file1');
 assert.equal(shell.error(), null);
 assert.equal(result, 'hello');
 assert.equal(shell.cat('tmp/file1'), 'hello');
-
-shell.exit(123);
+  });
+});

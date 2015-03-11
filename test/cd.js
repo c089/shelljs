@@ -4,7 +4,15 @@ var assert = require('assert'),
     path = require('path'),
     fs = require('fs');
 
-shell.config.silent = true;
+describe('cd', function() {
+  
+  beforeEach(function() {
+    shell.cd(__dirname);    
+    shell.config.silent = true;
+  });
+  
+  it('all tests', function() {
+        
 
 // save current dir
 var cur = shell.pwd();
@@ -54,4 +62,5 @@ shell.cd('../tmp');
 assert.equal(shell.error(), null);
 assert.equal(fs.existsSync('file1'), true);
 
-shell.exit(123);
+  });
+});

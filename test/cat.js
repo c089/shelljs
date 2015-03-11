@@ -7,11 +7,11 @@ describe('cat', function() {
   
   beforeEach(function() {
     shell.cd(__dirname);    
+    shell.config.silent = true;
   });
   
   it('all tests', function() {
         
-    shell.config.silent = true;
     
     shell.rm('-rf', 'tmp');
     shell.mkdir('tmp');

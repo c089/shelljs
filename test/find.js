@@ -2,7 +2,14 @@ var shell = require('..');
 
 var assert = require('assert');
 
-shell.config.silent = true;
+describe('find', function() {
+  
+  beforeEach(function() {
+    shell.cd(__dirname);    
+    shell.config.silent = true;
+  });
+  
+  it('all tests', function() {
 
 shell.rm('-rf', 'tmp');
 shell.mkdir('tmp');
@@ -47,5 +54,5 @@ assert.equal(shell.error(), null);
 assert.equal(result.indexOf('resources/find/dir1/dir11/a_dir11') > -1, true);
 assert.equal(result.indexOf('resources/find/dir2/a_dir1') > -1, true);
 assert.equal(result.length, 6);
-
-shell.exit(123);
+  });
+});

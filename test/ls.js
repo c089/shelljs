@@ -3,7 +3,14 @@ var shell = require('..');
 var assert = require('assert'),
     fs = require('fs');
 
-shell.config.silent = true;
+describe('ls', function() {
+  
+  beforeEach(function() {
+    shell.cd(__dirname);    
+    shell.config.silent = true;
+  });
+  
+  it('all tests', function() {
 
 shell.rm('-rf', 'tmp');
 shell.mkdir('tmp');
@@ -190,5 +197,5 @@ assert.equal(result.indexOf('resources/ls/a_dir') > -1, true);
 assert.equal(result.indexOf('resources/ls/a_dir/b_dir') > -1, true);
 assert.equal(result.indexOf('resources/ls/a_dir/b_dir/z') > -1, true);
 assert.equal(result.length, 9);
-
-shell.exit(123);
+  });
+});

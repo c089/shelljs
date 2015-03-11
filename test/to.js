@@ -3,7 +3,14 @@ var shell = require('..');
 var assert = require('assert'),
     fs = require('fs');
 
-shell.config.silent = true;
+describe('to', function() {
+  
+  beforeEach(function() {
+    shell.cd(__dirname);    
+    shell.config.silent = true;
+  });
+  
+  it('all tests', function() {
 
 shell.rm('-rf', 'tmp');
 shell.mkdir('tmp');
@@ -27,5 +34,5 @@ assert.ok(shell.error());
 var result = shell.cat('tmp/to1');
 assert.equal(shell.error(), null);
 assert.equal(result, 'hello world');
-
-shell.exit(123);
+  });
+});

@@ -3,7 +3,14 @@ var shell = require('..');
 var assert = require('assert'),
     path = require('path');
 
-shell.config.silent = true;
+describe('pushd', function() {
+  
+  beforeEach(function() {
+    shell.cd(__dirname);    
+    shell.config.silent = true;
+  });
+  
+  it('all tests', function() {
 
 var root = path.resolve(), trail;
 
@@ -220,5 +227,5 @@ assert.equal(process.cwd(), trail[0]);
 // Push without arguments invalid when stack is empty
 reset(); shell.pushd();
 assert.equal(shell.error(), 'pushd: no other directory\n');
-
-shell.exit(123);
+  });
+});

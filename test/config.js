@@ -3,6 +3,14 @@ var shell = require('..');
 var assert = require('assert'),
     child = require('child_process');
 
+describe('config', function() {
+  
+  beforeEach(function() {
+    shell.cd(__dirname);    
+  });
+  
+  it('all tests', function() {
+
 //
 // config.silent
 //
@@ -40,7 +48,9 @@ child.exec('node '+file, function(err, stdout) {
   script.to(file);
   child.exec('node '+file, function(err, stdout) {
     assert.ok(!stdout.match('got here'));
-
-    shell.exit(123);
   });
 });
+
+  });
+});
+    

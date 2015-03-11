@@ -3,7 +3,14 @@ var shell = require('..');
 var assert = require('assert'),
     fs = require('fs');
 
-shell.config.silent = true;
+describe('tempdir', function() {
+  
+  beforeEach(function() {
+    shell.cd(__dirname);    
+    shell.config.silent = true;
+  });
+  
+  it('all tests', function() {
 
 shell.rm('-rf', 'tmp');
 shell.mkdir('tmp');
@@ -15,5 +22,5 @@ shell.mkdir('tmp');
 var tmp = shell.tempdir();
 assert.equal(shell.error(), null);
 assert.equal(fs.existsSync(tmp), true);
-
-shell.exit(123);
+  });
+});

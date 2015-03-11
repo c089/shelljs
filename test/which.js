@@ -3,7 +3,14 @@ var shell = require('..');
 var assert = require('assert'),
     fs = require('fs');
 
-shell.config.silent = true;
+describe('which', function() {
+  
+  beforeEach(function() {
+    shell.cd(__dirname);    
+    shell.config.silent = true;
+  });
+  
+  it('all tests', function() {
 
 shell.rm('-rf', 'tmp');
 shell.mkdir('tmp');
@@ -26,5 +33,5 @@ assert.equal(result, null);
 var result = shell.which('node');
 assert.equal(shell.error(), null);
 assert.equal(fs.existsSync(result), true);
-
-shell.exit(123);
+  });
+});

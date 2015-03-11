@@ -3,7 +3,14 @@ var shell = require('..');
 var assert = require('assert'),
     fs = require('fs');
 
-shell.config.silent = true;
+describe('grep', function() {
+  
+  beforeEach(function() {
+    shell.cd(__dirname);    
+    shell.config.silent = true;
+  });
+  
+  it('all tests', function() {
 
 shell.rm('-rf', 'tmp');
 shell.mkdir('tmp');
@@ -62,5 +69,5 @@ assert.ok(result == 'test1\ntest2\n' || result == 'test2\ntest1\n');
 var result = shell.grep(/test/, '**/file*.js');
 assert.equal(shell.error(), null);
 assert.equal(result, 'test\ntest\ntest\ntest\n');
-
-shell.exit(123);
+  });
+});

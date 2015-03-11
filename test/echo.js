@@ -3,7 +3,14 @@ var shell = require('..');
 var assert = require('assert'),
     child = require('child_process');
 
-shell.config.silent = true;
+describe('echo', function() {
+  
+  beforeEach(function() {
+    shell.cd(__dirname);    
+    shell.config.silent = true;
+  });
+  
+  it('all tests', function() {
 
 shell.rm('-rf', 'tmp');
 shell.mkdir('tmp');
@@ -37,5 +44,7 @@ child.exec('node '+file, function(err, stdout) {
 });
 
 function theEnd() {
-  shell.exit(123);
+  //shell.exit(123);
 }
+  });
+});

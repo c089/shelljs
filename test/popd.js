@@ -3,7 +3,14 @@ var shell = require('..');
 var assert = require('assert'),
     path = require('path');
 
-shell.config.silent = true;
+describe('popd', function() {
+  
+  beforeEach(function() {
+    shell.cd(__dirname);    
+    shell.config.silent = true;
+  });
+  
+  it('all tests', function() {
 
 var root = path.resolve(), trail;
 
@@ -110,5 +117,5 @@ shell.popd();
 assert.ok(shell.error(), null);
 
 shell.cd(root);
-
-shell.exit(123);
+  });
+});

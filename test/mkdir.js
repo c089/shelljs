@@ -3,7 +3,14 @@ var shell = require('..');
 var assert = require('assert'),
     fs = require('fs');
 
-shell.config.silent = true;
+describe('mkdir', function() {
+  
+  beforeEach(function() {
+    shell.cd(__dirname);    
+    shell.config.silent = true;
+  });
+  
+  it('all tests', function() {
 
 function numLines(str) {
   return typeof str === 'string' ? str.match(/\n/g).length : 0;
@@ -71,5 +78,5 @@ assert.equal(shell.error(), null);
 assert.equal(fs.existsSync('tmp/yyya'), true);
 assert.equal(fs.existsSync('tmp/yyyb'), true);
 assert.equal(fs.existsSync('tmp/yyyc'), true);
-
-shell.exit(123);
+  });
+});
