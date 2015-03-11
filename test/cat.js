@@ -3,6 +3,10 @@ var shell = require('..');
 var assert = require('assert'),
     fs = require('fs');
 
+describe('cat', function() {
+  it('all tests', function() {
+shell.cd(__dirname);    
+    
 shell.config.silent = true;
 
 shell.rm('-rf', 'tmp');
@@ -43,4 +47,5 @@ assert.equal(shell.error(), null);
 assert.ok(result.search('test1') > -1); // file order might be random
 assert.ok(result.search('test2') > -1);
 
-shell.exit(123);
+  });
+});
