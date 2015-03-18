@@ -13,9 +13,6 @@ describe('cat', function() {
   it('all tests', function() {
         
     
-    shell.rm('-rf', 'tmp');
-    shell.mkdir('tmp');
-    
     //
     // Invalids
     //
